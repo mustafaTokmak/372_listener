@@ -53,6 +53,8 @@ def compare_and_send():
     print(time.strftime("%Y-%d-%m %H:%M:%S", time.gmtime()))
     oldpage = get_oldpage()
     webpage = get_webpage()
+    message("test")
+    telegram_bot_sendtext(message)
     if(oldpage == ""):
         message = "error in oldpage"
         telegram_bot_sendtext(message)
@@ -71,7 +73,7 @@ def compare_and_send():
 
 
 print(time.strftime("%Y-%d-%m %H:%M:%S", time.gmtime()))
-schedule.every().hour.do(compare_and_send)
+schedule.every(15).seconds.do(compare_and_send)
 while True:
     schedule.run_pending()
     time.sleep(1)
