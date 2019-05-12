@@ -74,7 +74,7 @@ def compare_and_send():
 
 print(time.strftime("%Y-%d-%m %H:%M:%S", time.gmtime()))
 # schedule.every().hour.do(compare_and_send)
-# schedule.every(10).seconds.do(compare_and_send)
+schedule.every(10).seconds.do(compare_and_send)
 while True:
-    compare_and_send()
-    time.sleep(10)
+    schedule.run_pending()
+    time.sleep(1)
