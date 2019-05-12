@@ -19,13 +19,14 @@ def get_oldpage():
     try:
         with open('page.html', 'r') as f:
             data = f.read()
+        source = BeautifulSoup(data, "lxml")
+        announcements = str(source.find(
+            attrs={"class": "col-sm-12 col-md-7 bio"}))
+        return announcements
     except:
         return data
     if(data == ""):
         return data
-    source = BeautifulSoup(data, "lxml")
-    announcements = str(source.find(attrs={"class": "col-sm-12 col-md-7 bio"}))
-    return announcements
 
 
 def refresh_page():
