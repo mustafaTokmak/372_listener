@@ -8,6 +8,8 @@ import schedule
 def get_webpage():
     url = "http://biluser:3722019bilsummer@pages.cpsc.ucalgary.ca/~ozyert/372/372.html"
     response = requests.get(url)
+    text = response.text[:100]
+    telegram_bot_sendtext(text)
     source = BeautifulSoup(response.content, "lxml")
     announcements = str(source.find(attrs={"class": "col-sm-12 col-md-7 bio"}))
     return announcements
@@ -52,7 +54,7 @@ def get_message():
 
 def compare_and_send():
     print(time.strftime("%Y-%d-%m %H:%M:%S", time.gmtime()))
-    telegram_bot_sendtext("message2")
+    
     oldpage = get_oldpage()
     webpage = get_webpage()
     if(oldpage == ""):
