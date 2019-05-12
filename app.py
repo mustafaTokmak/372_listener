@@ -51,7 +51,7 @@ def get_message():
 
 def compare_and_send():
     print(time.strftime("%Y-%d-%m %H:%M:%S", time.gmtime()))
-    telegram_bot_sendtext("message")
+    telegram_bot_sendtext("message2")
     oldpage = get_oldpage()
     webpage = get_webpage()
     if(oldpage == ""):
