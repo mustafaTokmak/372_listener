@@ -50,6 +50,7 @@ def get_message():
 
 
 def compare_and_send():
+    print(time.strftime("%Y-%d-%m %H:%M:%S", time.gmtime()))
     oldpage = get_oldpage()
     webpage = get_webpage()
     if(oldpage == ""):
@@ -69,6 +70,7 @@ def compare_and_send():
         refresh_page()
 
 
+print(time.strftime("%Y-%d-%m %H:%M:%S", time.gmtime()))
 schedule.every().hour.do(compare_and_send)
 while True:
     schedule.run_pending()
