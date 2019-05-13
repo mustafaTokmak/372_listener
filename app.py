@@ -1,7 +1,7 @@
 import requests
 import time
 from bs4 import BeautifulSoup
-from telegram_bot import telegram_bot_sendtext
+from telegram_bot import telegram_bot_sendtext, send_all_user
 import schedule
 
 
@@ -72,9 +72,13 @@ def compare_and_send():
         refresh_page()
 
 
-print(time.strftime("%Y-%d-%m %H:%M:%S", time.gmtime()))
+def call():
+    t = time.strftime("%Y-%d-%m %H:%M:%S", time.gmtime())
+    send_all_user(str(t))
+
+
 # schedule.every().hour.do(compare_and_send)
-schedule.every(30).minutes.do(compare_and_send)
+schedule.every().hour.do(compare_and_send)
 while True:
     schedule.run_pending()
     time.sleep(1)
