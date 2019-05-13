@@ -56,7 +56,8 @@ def get_message():
 
 
 def compare_and_send():
-    print(time.strftime("%Y-%d-%m %H:%M:%S", time.gmtime()))
+    t = time.strftime("%Y-%d-%m %H:%M:%S", time.gmtime())
+    print(t)
     oldpage = get_oldpage()
     webpage = get_webpage()
 
