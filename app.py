@@ -7,10 +7,14 @@ import schedule
 
 def get_webpage():
     url = "http://biluser:3722019bilsummer@pages.cpsc.ucalgary.ca/~ozyert/372/372.html"
-    response = requests.get(url)
-    text = response.text[:100]
-    source = BeautifulSoup(response.content, "lxml")
-    announcements = str(source.find(attrs={"class": "col-sm-12 col-md-7 bio"}))
+    try:
+        response = requests.get(url)
+        text = response.text[:100]
+        source = BeautifulSoup(response.content, "lxml")
+        announcements = str(source.find(
+            attrs={"class": "col-sm-12 col-md-7 bio"}))
+    except:
+        announcements = ""
     return announcements
 
 
