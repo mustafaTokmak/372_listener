@@ -15,7 +15,7 @@ def get_webpage():
             attrs={"class": "col-sm-12 col-md-7 bio"}))
     except:
         announcements = ""
-    return announcements
+    return str(announcements)
 
 
 def get_oldpage():
@@ -27,7 +27,7 @@ def get_oldpage():
         source = BeautifulSoup(data, "lxml")
         announcements = str(source.find(
             attrs={"class": "col-sm-12 col-md-7 bio"}))
-        return announcements
+        return str(announcements)
     except:
         return data
     if(data == ""):
@@ -59,6 +59,7 @@ def compare_and_send():
     print(time.strftime("%Y-%d-%m %H:%M:%S", time.gmtime()))
     oldpage = get_oldpage()
     webpage = get_webpage()
+
     if(oldpage == ""):
         message = "error in oldpage"
         send_all_user(message)
@@ -72,7 +73,6 @@ def compare_and_send():
             message += get_message()
         except:
             message += "message is emtpy CHECK Website"
-        print(telegram_bot_sendtext(message))
         refresh_page()
 
 
@@ -81,7 +81,7 @@ def call():
     send_all_user(str(t))
 
 
-# schedule.every().hour.do(compare_and_send)
+schedule.every(5).seconds.do(compare_and_send)
 schedule.every().hour.do(compare_and_send)
 while True:
     schedule.run_pending()
