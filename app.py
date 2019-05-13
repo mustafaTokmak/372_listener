@@ -61,10 +61,10 @@ def compare_and_send():
     webpage = get_webpage()
     if(oldpage == ""):
         message = "error in oldpage"
-        telegram_bot_sendtext(message)
+        send_all_user(message)
     if(webpage == ""):
         message = "error in webpage"
-        telegram_bot_sendtext(message)
+        send_all_user(message)
     if(webpage != oldpage):
         print("run")
         message = "New Note in 372 Page: \n\n"
