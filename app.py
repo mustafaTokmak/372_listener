@@ -81,7 +81,7 @@ def call():
     send_all_user(str(t))
 
 
-schedule.every(5).seconds.do(compare_and_send)
+#schedule.every(5).seconds.do(compare_and_send)
 schedule.every().hour.do(compare_and_send)
 while True:
     schedule.run_pending()
